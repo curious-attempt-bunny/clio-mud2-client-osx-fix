@@ -1,0 +1,58 @@
+Clio MUD2 Client.
+Copyright (c) 2003 Ian Peattie.
+All rights reserved.
+
+
+INSTALLATION
+
+After extracting the tar file, you should have:
+
+File		Description			Suggested Location
+----		-----------			------------------
+README		This file			/usr/local/lib/clio/
+clio		Clio binary			/usr/local/bin/
+clio.6		Manual, nroff format		/usr/local/man/man.6/
+clio.man	Clio manual, processed format	-
+bl		Script for British Legends	/usr/local/lib/clio/
+mud2		Script for MUD2.com		/usr/local/lib/clio/
+mudii		Script for MUDII.co.uk		/usr/local/lib/clio/
+purgelogs	Script to delete old logs	/usr/local/lib/clio/
+
+Copy these files into the suggested locations, or to wherever you
+install programs on your system. The clio.man file can be used for
+those systems without the document processing tools. (nroff and
+friends)
+
+The shell scripts in /usr/local/lib/clio/ illustrate the use of
+environment variables with Clio to enable autologin.  They should
+be copied to your $(HOME)/bin directory and then edited to include
+the correct account and password details.
+
+The purgelogs script can be run by hand, or via cron, to clean up
+old log files.
+
+IMPORTANT: These files *MUST* be readable and executable only by you.
+If other people can read or run these files they will be able to
+login to MUD2 with your account.
+
+  % cd
+  % cd bin
+  % cp /usr/local/lib/clio/mud2 .
+  % chmod 700 clio
+  % vi clio
+
+
+AUTOLOGIN SECURITY
+
+As noted above, the use of variables in shell scripts to record your
+account name and password is a potential security risk. If another 
+user can read the shell script they will see your password.
+
+The other method of supplying account information to clio is to use
+the -a, -b, -c and -p flags. However, this method is even less secure
+as your account details will be visible to other users via the ps(1)
+command.
+
+Of course, Clio could store the account information in an encrypted
+form, but then you would have to enter a password to access THAT
+information, negating the advantage of autologin...

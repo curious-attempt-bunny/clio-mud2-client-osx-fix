@@ -1,0 +1,25 @@
+Getting Started
+---------------
+To build Clio you will need:
+
+	* An ANSI C compiler.
+	* The flex lexical analyzer generator.
+	* A Berkeley-like sockets API, (Winsock will do).
+	* A curses screen handling library. 
+	* An OSS compatible sound library (optional).
+
+If you don't have flex, you will find a telnet.c file in the contrib
+directory which was produced by running telnet.l through flex 2.5.4 on
+a SCO OpenServer 5.0.5 system. It should compile on most systems. Just
+copy telnet.c to the src directory.
+
+If your system does not have a native curses library, download and
+install ncurses from your local GNU site. If ncurses doesn't support
+your system, you'll need to find another curses library. For Windows,
+you can use PDCurses (available on SourceForge).
+
+If you don't have OSS, you can download it from the SGI website at
+http://oss.sgi.com./projects/audiofile/. If your system is not 
+supported, you can still build Clio, but without sound effects.
+Under Windows, Clio uses the Win32 PlaySound() function, and doesn't
+need OSS.

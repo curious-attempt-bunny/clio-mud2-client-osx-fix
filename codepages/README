@@ -1,0 +1,3 @@
+ascii - ISO-8859-1 mapped to ASCII.
+cp437 - ISO-8859-1 mapped to IBM code page 437.
+cp850 - ISO-8859-1 mapped to IBM code page 850.

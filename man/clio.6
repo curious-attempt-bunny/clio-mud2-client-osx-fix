@@ -1,0 +1,300 @@
+.\" $Revision: 1.8.0.0 $
+.TH CLIO 6
+.SH NAME
+clio \- curses based client for MUD2
+.SH SYNOPSIS
+.B clio
+[
+.BI \-ehlnuvw
+]
+[
+.BI \-a " account"
+]
+[
+.BI \-b " user"
+]
+[
+.BI \-c " upassword"
+]
+[
+.BI \-f " directory"
+]
+[
+.BI \-m " map"
+]
+[
+.BI \-p " apassword"
+]
+[
+.BI \-q " level"
+]
+[
+.BI \-s " lines"
+]
+.I host
+[
+.I port
+]
+.SH DESCRIPTION
+.B clio
+connects to the MUD2 server on the specified
+.I host
+and starts a telnet session. When logged in, it puts the MUD2 server
+into client mode, providing the user with status information and local
+command editing facilities.
+
+By default,
+.B clio
+connects to the host on the standard telnet port, 23. If
+.I port
+is given on the command line, it is used instead of port 23.
+.SH OPTIONS
+.TP
+.B \-a
+Specifies the account number to be sent in response to the
+``Account ID:'' prompt when using autologin.
+.TP
+.B \-b
+Specifies the username to be sent in response to the ``login:'' prompt
+when using autologin.
+.TP
+.B \-c
+Specifies the password to be sent in response to the ``Password:''
+prompt when using autologin.
+
+This is the password for the username specified
+with the ``\fB-b\fP'' option. It is not normally required when logging
+in as \fBmud\fP, but may be required for some other usernames.
+
+Use the
+``\fB-p\fP'' flag to specify the account password.
+.TP
+.B \-e
+The ``\fB\-e\fP'' option causes
+.B clio
+to treat a blank input line as equivalent to \fBCTRL-L\fP. The effect of
+this is to repeat the last command when ENTER is pressed with an empty
+input buffer.
+.TP
+.B \-f
+Specifies the directory under which to create logfiles. If the ``\fB-f\fP''
+option is not given, the MUD2 server hostname is used.
+.TP
+.B \-h
+Log the current session to an HTML file. The logfile is created 
+below the directory
+.B cliologs
+in your home directory.
+.TP
+.B \-l
+Similar to the ``\fB-h\fP'' option, but the logfile is created in 
+plain text format.
+.TP
+.B \-m
+Use the specified \fBmap\fP file to tell \fBclio\fP how to map from
+the standard ISO-8859-1 character set to the character set used by
+the local screen.
+.TP
+.B \-n
+Do not attempt to automatically enter client mode. If this option is
+used
+.B clio
+will leave the server in ANSI mode. No status information is displayed
+when using ANSI mode.
+.TP
+.B \-p
+Specifies the password to be sent in response to the ``Password:''
+prompt when using autologin. This is the password for the account
+specified with the ``\fB-a\fP'' option. Use the ``\fB-c\fP'' flag to
+specify the login password.
+.TP
+.B \-q
+Specify the initial sound effects level. A
+.I level
+of 0 disables all sound effects, 1 enables the standard sound effects
+and 2 enables both the standard and extended sound effects. The 
+default value is 2.
+.TP
+.B \-s
+Specify the size of the scroll back buffer. The default size is 300
+lines.  A large buffer may slow down scrolling.
+.TP
+.B \-u
+.B clio
+will normally highlight any URLs in bright blue. The ``\fB-u\fP''
+option suppresses this behaviour, causing the URLs to be displayed using
+the same colour as the surrounding text.
+.TP
+.B \-v
+Display the
+.B clio
+version number and then exit.
+.TP
+.B \-w
+Use the standard \fBMUDII.co.uk\fP colour scheme instead of the usual
+\fBMUD2.com\fP colour scheme.
+.SH "AUTOLOGIN SECURITY"
+When using the autologin feature, there are a number of security issues
+which must be considered. If the ``\fB-a\fP'', ``\fB-b\fP'',
+``\fB-c\fP''
+or ``\fB-p\fP'' options are used to specify an account name or
+password on the command line, it may be possible for other users on
+the system to see this information by using \fBps\fP(1) or similar
+commands.
+
+An alternative method of passing account and password information is to
+use the \fBCLIOLUSER\fP, \fBCLIOLPASS\fP, \fBCLIOUSER\fP and
+\fBCLIOPASS\fP environment variables. However,
+care should be taken to avoid these being recorded, for example in 
+your shell's history file. Also, if using these environment variables
+in a shell script, you should ensure that it is unreadable by other
+users.
+.SH "SCROLL BACK"
+Previous screen output can be reviewed using the \fBPAGE UP\fP and 
+\fBPAGE DOWN\fP keys to move through the scroll back buffer. Pressing
+the \fBCTRL-A\fP key at any point returns to the end of the buffer.
+
+The size of the scroll back buffer can be changed using the ``\fB-s\fP''
+option.
+.SH "FUNCTION KEYS"
+The function keys F1 to F12 can have commonly used commands bound
+to them, allowing them to be sent with a single keystroke. To bind
+commands to the function keys, create a
+.B .cliorc
+file in your home directory, containing lines such as:
+F1=who.
+
+Keys F13 to F24 are mapped to \fBSHIFT-F1\fP to \fBSHIFT-F12\fP, and
+keys F25 to F36 are mapped to \fBCTRL-F1\fP to \fBCTRL-F12\fP.
+.SH "DREAMWORDS"
+.B clio
+will detect any dreamwords sent by the MUD2 server, and will display
+them on the status line. Dreamwords can be automatically spoken by
+pressing \fBCTRL-D\fP.
+.SH "SOUND EFFECTS"
+.B clio
+can play sound effects in response to certain events within the
+game. See the
+.B readme.txt
+file in 
+.B /usr/local/lib/clio/sounds
+for more details.
+.SH "SCREEN HANDLING"
+.B clio
+uses the
+.I curses
+library to handle the screen. In order for curses to function correctly
+it needs to know both your terminal type and which codes it responds
+to. Your terminal type is read from the \fBTERM\fP environment
+variable, and the list of codes your terminal understands is read from
+the system terminfo database.
+
+In addition, your terminal needs to have been correctly initialised to
+its default settings before you start \fBclio\fP.
+
+Normally, all this is set up for you automatically when you first
+login, via a command in your \fB\.profile\fP or \fB.login\fP file.
+
+If your screen does not display correctly, try the following
+procedures to correct it:
+.TP
+*
+Quit
+.B clio
+and type \fBtput init\fP to initialise your terminal.
+Then try running \fBclio\fP again.
+.TP
+*
+Type \fBecho $TERM\fP to check the value of the \fBTERM\fP
+environment variable. If you are running on the system console, a
+value of \fBconsole\fP, \fBansi\fP, or \fBlinux\fP would be
+reasonable, depending on the version of UNIX you are using.
+.TP
+*
+If you are running on a terminal or via a terminal emulation
+package, the value of
+.B TERM
+should reflect the type of terminal you are using. For example,
+.B wy60
+for a Wyse 60 terminal.
+.TP
+*
+If you think your
+.B TERM
+setting may be wrong, try changing it.  How you do this will depend
+on the type of shell you are running.  For Bourne-like shells try
+\fBTERM=ansi\fP, and for csh-like shells try \fBsetenv TERM ansi\fP.
+Try various other values in place of \fBansi\fP.
+\.  Other common
+.B TERM
+types worth trying are
+.B vt100
+and \fBwy60\fP. Remember to do a
+.B tput init
+each time you change the value of \fBTERM\fP.
+.SH ENVIRONMENT
+The behaviour of
+.B clio
+can be modified by setting a number of environment variables. If both
+command line options and environment variables are supplied, the
+command line options will take precedence.
+.TP
+CLIOHOST
+The hostname of the MUD2 server.
+.TP
+CLIOPORT
+The port to connect to on the MUD2 server.
+.TP
+CLIOLUSER
+The initial login name for the MUD2 server. Usually \fBmud\fP.
+.TP
+CLIOLPASS
+The password associated with the \fBCLIOLUSER\fP login name. This
+may not be required as the \fBmud\fP login does not normally have
+a password.
+.TP
+CLIOUSER
+The MUD2 account number.
+.TP
+CLIOPASS
+The password associated with the \fBCLIOUSER\fP account number.
+.TP
+CLIOSOUNDS
+The directory containing the 
+.B clio
+sound effects. Defaults to \fB/usr/local/lib/clio/sounds/\fP.
+.TP
+HOME
+The user's home directory.
+.TP
+TERM
+The user's terminal type.
+.TP
+TERMINFO
+The location of the terminfo database.
+.SH FILES
+.TP
+$HOME/.cliorc
+.B clio
+configuration file.
+.TP
+$HOME/cliologs
+Top level directory for log files.
+.TP
+$CLIOSOUNDS/*.wav
+.B clio
+sound effects.
+.SH AUTHOR
+Written by Ian Peattie <ian@wabe.org.uk>.
+.SH BUGS
+Please report any problems to <clio@wabe.org.uk>.
+.SH "WEB PAGE"
+http://www.wabe.org.uk/clio/
+.SH "VERSION"
+This manual documents
+.B clio
+version 1.8.
+.SH STATUS
+Clio is OSI Certified Open Source Software.
+.SH "SEE ALSO"
+\fBtelnet\fP(1), \fBtput\fP(1), \fBcurses\fP(3), \fBterminfo\fP(5).

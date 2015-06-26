@@ -1,0 +1,351 @@
+Changes to Clio from version 1.7 to version 1.8
+-----------------------------------------------
+* /E now works for non-MUD2 muds too.
+
+* You can now use the /P (change password) and /S (set timeout)
+  commands when in the game, without Clio clobbering them with
+  a FES command. Similarly, wizzes can now use /BR.
+
+* Wizzes who use /DI no longer lose their dreamword.
+
+* Wrapped the Clio log file style sheet in HTML comments to 
+  prevent it being rendered by non-css aware browsers.
+
+* Tiny cosmetic change to the CSS layout for the <PRE> element.
+
+* The default scroll back buffer is now 300 lines.
+
+* Changed house messages to use white on blue under the MUD2.com
+  colour scheme to match the system defaults.
+
+* Changed the snow messages to use white on green under the
+  MUDII.co.uk colour scheme to match the system defaults.
+
+* Changed the snow message on the status line to reflect the
+  MUDII.co.uk colour scheme.
+
+* The post-storm rainbow now gets its correct colour coding.
+
+* Added a META HTTP-EQUIV tag for Content-Type to the Clio
+  log output.
+
+
+
+Changes to Clio from version 1.6 to version 1.7
+-----------------------------------------------
+* When uploading a file, any tab characters are now converted to 
+  a single space. Previously they were just ignored.
+
+* Fixed a problem with the wiz /DIR command messing up the status
+  line.
+
+* Fixed a problem where Clio sometimes didn't detect you quitting
+  the game, resulting in your score still being displayed when
+  you arrived back at the Option: prompt.
+
+* Replaced the MUD2 champagne sound effect (1324.wav) with a less
+  wimpy POP! sound.
+
+* Changed the way Clio names log files to use a hierarchical
+  structure including the year and month. The new format is
+  host\year\month\day-HHMMSS.html. Eg, a file named:
+
+        Logs\MUD2.com\20011201-134530.html
+
+  under the old system would now be named:
+
+        Logs\MUD2.com\2001\December\01-134530.html
+
+  If you have a lot of old log files, and you'd like to rename
+  them to the new format, you'll find a little utility at
+  http://www.wabe.org.uk/clio/clogs.exe which will do it for
+  you. UNIX users can do the same thing with a couple of lines
+  of Perl. This is left as an exercise for the reader.
+
+* Excised the remaining references to 'Wireplay' from the
+  documentation files, and replaced them with 'MUDII.co.uk'.
+
+* Added a -f option to allow the base folder for log files to
+  be specified. This is useful if you connect through a telnet
+  proxy.
+
+  Eg:  clio -f MUD2.com telnet-proxy.example.com
+
+  You can also use this to combine all your logs into one folder
+
+  Eg:   clio /F "My MUD2 Logs" MUD2.com
+        clio /F "My MUD2 Logs" MUDII.co.uk
+
+  If the -f option is not specified, the host name will be used
+  as the folder name.
+
+* Clio no longer filters out input characters with the 8th bit set.
+  This is to allow the use of accented characters with non-English 
+  language MUDs.
+
+* Formalised the fact that Clio's internal character set is the
+  ISO-8859-1 (Latin 1) alphabet.
+
+  This allows Clio to display text from MUDs written in Afrikaans,
+  Albanian, Basque, Catalan, Danish, Dutch, English, Faroese,
+  Finnish, French, Galician, German, Icelandic, Irish Gaelic,
+  Italian, Norwegian, Portuguese, Rhaeto-Romanic, Scottish Gaelic,
+  Spanish, Swahili, and Swedish!
+
+  (Thanks to Pablo Ruiz for access to his Spanish language MUD
+  while testing this - http://eutherpe.org/)
+
+* Added screen-handling support for systems which do not support
+  ISO-8859-1 directly. Clio can read a code page mapping file,
+  specified via the new /M option, which describes how to translate
+  the ISO-8859-1 character set to the native system character set.
+
+  Eg:
+        clio /M cp850 example.com
+
+* Created code page map files for IBM 850, IBM 437, and ASCII.
+
+* Added HTML entity name support to the logging code for all
+  ISO-8859-1 characters.
+
+* Fixed a tiny bug in catch/throw handling code in MUDFREND mode.
+
+* Updated the Windows Help file, and UNIX man page.
+
+
+
+Changes to Clio from version 1.5 to version 1.6
+-----------------------------------------------
+* Clio is now open source software, and is distributed under the
+  MIT licence. The Clio source code is available from SourceForge.
+  (http://www.sourceforge.net/projects/clio-mud2/)
+
+* Improved interaction with telnet servers that refuse to negotiate
+  telnet GO AHEAD suppression.
+
+* Fixed a problem with Clio repeatedly attempting to enter client mode
+  even though it was in client mode already. If this happened when in 
+  non-echo (/N) mode, you could get stuck in a loop, and not be able
+  to recover (with /E). 
+
+* Tidied up the UNIX man page, and fixed numerous typos.
+
+* Small portability fixes for Sun Solaris 8.
+
+* The Clio version number is now logged as part of the HTML
+  "generator" string.
+
+* CTRL-R will now do a full screen redraw, for UNIX systems where
+  output from other commands has messed up the display.
+
+* Fixed a possible cause of the occasional pauses when starting
+  under Windows. (Doesn't seem to have made much difference, 
+  though...<grumble>)
+
+* Backspace characters are now correctly handled when creating
+  log files.
+
+* Clio is now slightly less egotistical when creating HTML log
+  files...
+
+* The MUSE copyright notice is now only added to log footers if
+  the log is from a MUD2 site.
+
+
+
+Changes to Clio from version 1.4 to version 1.5
+-----------------------------------------------
+* More improvements to URL parsing.
+
+* Fixed a problem with the default colour not always being set when
+  using the 'MUDII.co.uk' (nee 'Wireplay') colour scheme.
+
+* Added support for another 24 function keys, F13 to F36. These are
+  usually mapped to SHIFT-F1 - SHIFT-F12 and CTRL-F1 - CTRL-F12. You
+  can define them in you clio.ini or .cliorc file as normal.
+
+  Eg: F13=get treasure
+      F25=drop treasure
+
+* Added the ability to upload files. To read from a file, type the 
+  full path name (Eg C:\Windows\Desktop\My Quest.txt) on the input
+  line, and then press CTRL-Y. There is an artificial delay after 
+  each line, to avoid flooding the MUD2 server. File upload only
+  works for wizzes.
+
+* Improved handling of ANSI colour codes from non-MUD2 MUDs. Clio is 
+  now more tolerant of the mangled ANSI codes produced by some MUDs.
+
+
+
+Changes to Clio from version 1.3 to version 1.4
+-----------------------------------------------
+* Cosmetic changes to the status line display when not in client mode.
+
+* Clio now takes full advantage of the 30 line console presented by
+  some versions of Linux, and of 43 and 50 line MS-DOS consoles.
+
+* Fixed a problem with bold colours and highlighted URLs when running
+  in ANSI mode.
+
+* Clio now jumps back to the bottom of the scroll back buffer if a
+  command is entered.
+
+* The DELETE key now functions as it should. (It used to function like
+  the BACKSPACE key.
+
+* Increased the size of the command history to hold the last forty
+  commands entered. Improved history handling of blank commands.
+
+
+
+Changes to Clio from version 1.2 to version 1.3
+-----------------------------------------------
+* Complete re-write of the HTML logging code:
+
+  . Clio now uses cascading style sheets instead of <FONT> tags
+    for colouring text.
+
+  . Colours are now logged from ANSI mode as well as client mode.
+
+  . Less gratuitous use of &nbsp; making the HTML more readable, 
+    and the log files a lot smaller.
+
+  . URLs that appear in log files are now clickable.
+
+  . All HTML produced by Clio now conforms to the "HTML 4.01 Strict"
+    specification, and passes the W3C validation tests for both HTML
+    and CSS.
+
+* Fixed a problem with % signs not displaying.
+
+* Added a caption to the Windows title bar.
+
+* Added a work-around for the missing local sound effects.
+  (The cannon, the mine flooding, and the dragon's hawumph).
+
+* Added auto login support for initial username and password. Two new
+  command line flags, -b and -c, supply the login name and password.
+
+  Eg: clio -b mud -a p00000011 -p secret mud2.com
+
+  The -c option is only needed if there is a password for the login
+  name.
+
+  Eg: clio -b mud -c mudpasswd -a p00000011 -p secret mud2.com
+
+  There are two new environment variables, CLIOLUSER and CLIOLPASS
+  which can be used in place of the command line options. They
+  function similarly to the CLIOUSER and CLIOPASS variables. Eg:
+
+    set CLIOLUSER=mud
+    set CLIOUSER=p00000011
+    set CLIOPASS=secret
+    clio mud2.com
+
+* Improved parsing of URLs. Trailing '.' is now not included.
+
+* Improved the handling of 'Wireplay' mode colours.
+
+* Added sound effects support to the Linux and UNIX versions. You will
+  need to have the Open Sound System installed. This comes as standard
+  on recent version of Linux and UnixWare. For SCO OpenServer, you
+  will need the sound drivers from SCO's ftp site.
+  (ftp://ftp.sco.com/pub/drivers/OSR505/audio/)
+
+  I'm not sure of the current situation re OpenBSD and OSS, and I'd
+  welcome any feedback on this if there is actually anyone running
+  Clio under OpenBSD with sound.
+
+* telnet:// URLs are now coloured and logged like http:. So are wais:
+  and gopher: (ask your parents....).
+
+
+
+Changes to Clio from version 1.1 to version 1.2
+-----------------------------------------------
+* Clearing the screen now resets the scroll-back buffer to the end.
+
+* Fixed a buffer overflow in telnet option negotiation.
+
+* Added support for sound effects under Windows. See the readme.txt
+  file in C:\Program Files\Clio MUD2 Client\Sounds\ for details.
+
+* CTRL-W will now toggle between the different levels of sound
+  effects.
+
+* Added a -q flag to set the initial sound effects level. The default
+  value is 2.
+
+      clio -q 0 mud2.com    # Quiet - no sound effects.
+      clio -q 1 mud2.com    # Standard sound effects only.
+      clio -q 2 mud2.com    # Extended sound effects.
+
+* General overhaul of the way Clio handles the weather. Fixed a
+  problem with weather description jumping between RAIN and STORM
+  if you are outside during a storm.
+
+* CLOUD is now displayed in dark grey if storm clouds are gathering.
+
+* Expanded the usage message if you run clio with no parameters.
+
+* URLs starting "https://" are now treated similarly to "http://"
+  and "ftp://".
+
+* Minor changes to the layout of the log file. Brightened up the
+  colours when logging in html.
+
+* Updated the Windows Help file, and UNIX man page.
+
+
+
+Changes to Clio from version 1.0 to version 1.1
+-----------------------------------------------
+* Fixed problem with creeping prompt in CONVERSE mode.
+
+* The ESC key will now clear the input line, similar to CTRL-U.
+
+* URLs appearing at the end of spoken comments no longer mess up the
+  screen colours.
+
+* Options can now be specified using the standard DOS '/' character, 
+  in addition to the standard UNIX '-' character. Option letter are
+  now case-insensitive.
+
+  Eg: clio -a acc -p passwd mud2.com
+      clio /A acc /P passwd mud2.com
+
+* When Clio is run from a DOS prompt, the window colours are now
+  correctly reset when the program ends.
+
+* Added a -w flag to tell Clio to use the default Wireplay colour
+  scheme instead of the default MUD2.com colour scheme.
+
+  Eg: clio -w wp34.wireplay.net
+
+* Clio now has a scroll back buffer to allow previous screen output
+  to be reviewed. Use the PAGE UP and PAGE DOWN keys to scroll
+  through the buffer. CTRL-A will jump directly to the end of the 
+  buffer.
+
+* The size of the scroll back buffer can be increased with the -s 
+  option. The default size is 200 lines. Large buffers will use up
+  more memory, and may cause slow scrolling.
+
+  Eg: clio -s 400 mud2.com
+
+* Updated the Windows Help file, and UNIX man page.
+
+
+
+Release History
+---------------
+1.0     31st October 2000       Initial release.
+1.1     3rd February 2001       Scroll back.
+1.2     24th February 2001      Sound effects.
+1.3     29th March 2001         Clean up, MUDII.co.uk.
+1.4     28th April 2001         Clean up, repackaged for Windows.
+1.5     25th August 2001        File upload, More F-keys.
+1.6     10th November 2001      Clean up, Open source. 
+1.7     8th May 2002            Log restructuring, multi-lingual.
+1.8                             Bug fixes.

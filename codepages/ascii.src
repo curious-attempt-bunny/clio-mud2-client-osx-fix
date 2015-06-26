@@ -1,0 +1,101 @@
+# Clio MUD2 Client code map.
+# Copyright (c) 2002 Ian Peattie.
+#
+# ISO-8859-1 (Latin 1) mapped to ASCII.
+
+A0:20	# No-break space
+A1:21	# Inverted exclaimation mark
+A2:63	# Cent sign
+A3:23	# Pound sign
+A4:6F	# Currency sign
+A5:59	# Yen sign
+A6:7C	# Broken bar
+A7:53	# Section sign
+A8:22	# Diaeresis
+A9:63	# Copyright sign
+AA:61	# Feminine ordinal indicator
+AB:3C	# Left-pointing double angle quotation mark
+AC:2D	# Not sign
+AD:2D	# Soft hyphen
+AE:52	# Registered sign
+AF:2D	# Macron
+B0:6F	# Degree sign
+B1:23	# Plus-minus sign
+B2:32	# Superscript two
+B3:33	# Superscript three
+B4:2F	# Acute accent
+B5:75	# Micro sign
+B6:50	# Pilcrow sign
+B7:2E	# Middle dot
+B8:2C	# Cedilla
+B9:31	# Superscript one
+BA:6F	# Masculine ordinal indicator
+BB:3E	# Right-pointing double angle quotation mark
+BC:20	# Vulgar fraction one quarter
+BD:20	# Vulgar fraction one half
+BE:20	# Vulgar fraction three quarters
+BF:3F	# Inverted question mark
+C0:41	# Latin capital letter A with grave
+C1:41	# Latin capital letter A with acute
+C2:41	# Latin capital letter A with circumflex
+C3:41	# Latin capital letter A with tilde
+C4:41	# Latin capital letter A with diaeresis
+C5:41	# Latin capital letter A with ring above
+C6:41	# Latin capital letter AE
+C7:43	# Latin capital letter C with cedilla
+C8:45	# Latin capital letter E with grave
+C9:45	# Latin capital letter E with acute
+CA:45	# Latin capital letter E with circumflex
+CB:45	# Latin capital letter E with diaeresis
+CC:49	# Latin capital letter I with grave
+CD:49	# Latin capital letter I with acute
+CE:49	# Latin capital letter I with circumflex
+CF:49	# Latin capital letter I with diaeresis
+D0:44	# Latin capital letter Eth
+D1:4E	# Latin capital letter N with tilde
+D2:4F	# Latin capital letter O with grave
+D3:4F	# Latin capital letter O with acute
+D4:4F	# Latin capital letter O with circumflex
+D5:4F	# Latin capital letter O with tilde
+D6:4F	# Latin capital letter O with diaeresis
+D7:78	# Multiplication sign
+D8:4f	# Latin capital letter O with stroke
+D9:55	# Latin capital letter U with grave
+DA:55	# Latin capital letter U with acute
+DB:55	# Latin capital letter U with circumflex
+DC:55	# Latin capital letter U with diaeresis
+DD:59	# Latin capital letter Y with acute
+DE:50	# Latin capital letter Thorn
+DF:42	# Latin small letter sharp S
+E0:61	# Latin small letter A with grave
+E1:61	# Latin small letter A with acute
+E2:61	# Latin small letter A with circumflex
+E3:61	# Latin small letter A with tilde
+E4:61	# Latin small letter A with diaeresis
+E5:61	# Latin small letter A with ring above
+E6:61	# Latin small letter AE
+E7:63	# Latin small letter C with cedilla
+E8:65	# Latin small letter E with grave
+E9:65	# Latin small letter E with acute
+EA:65	# Latin small letter E with circumflex
+EB:65	# Latin small letter E with diaeresis
+EC:69	# Latin small letter I with grave
+ED:69	# Latin small letter I with acute
+EE:69	# Latin small letter I with circumflex
+EF:69	# Latin small letter I with diaeresis
+F0:64	# Latin small letter Eth
+F1:6E	# Latin small letter N with tilde
+F2:6F	# Latin small letter O grave
+F3:6F	# Latin small letter O acute
+F4:6F	# Latin small letter O circumflex
+F5:6F	# Latin small letter O tilde
+F6:6F	# Latin small letter O diaeresis
+F7:2F	# Division sign
+F8:6F	# Latin small letter O with stroke
+F9:75	# Latin small letter U with grave
+FA:75	# Latin small letter U with acute
+FB:75	# Latin small letter U with circumflex
+FC:75	# Latin small letter U with diaeresis
+FD:79	# Latin small letter Y with acute
+FE:70	# Latin small letter Thorn
+FF:79	# Latin small letter Y diaeresis

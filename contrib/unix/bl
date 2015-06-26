@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# Clio MUD2 Client.
+# Copyright (c) 2002, Ian Peattie.
+# All rights reserved.
+
+# clio [-ehlnuvw] [-a account] [-b user] [-c upassword] [-f folder] \
+#      [-p apassword] [-q level] [-s lines] host [port]
+#
+#      -a account      Use 'account' for autologin.
+#      -b user         Use 'user' for autologin.
+#      -c password     Use 'password' for autologin.
+#      -e              Make ENTER repeat the last command.
+#      -f folder       Use 'folder' for log files instead of 'host'.
+#      -h              Log session in HTML.
+#      -l              Log session in plain text.
+#      -n              Do not enter client mode.
+#      -p password     Use 'password' for autologin.
+#      -q level        Set sound effects level.
+#      -s lines        Set scroll-back buffer size.
+#      -u              Do not highlight URLs.
+#      -v              Show Clio version number, then exit.
+#      -w              Enable alternative colour scheme.
+
+CLIOHOST=british-legends.com
+CLIOPORT=27750
+
+export CLIOHOST CLIOPORT
+
+exec clio -h -n $*

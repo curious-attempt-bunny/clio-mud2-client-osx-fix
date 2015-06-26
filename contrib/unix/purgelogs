@@ -1,0 +1,11 @@
+#!/bin/sh
+
+LOGDIR=${HOME}/cliologs/
+DAYS=45
+
+[ -d $LOGDIR ] && {
+	find $LOGDIR -atime +$DAYS -type f -name '*.html' -exec rm {} \;
+	find $LOGDIR -atime +$DAYS -type f -name '*.txt'  -exec rm {} \;
+
+	find $LOGDIR -type d -exec rmdir {} \; > /dev/null 2>&1
+}

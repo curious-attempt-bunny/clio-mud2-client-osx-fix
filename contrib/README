@@ -1,0 +1,3 @@
+
+telnet.c - The result of running telnet.l through flex. If your system
+doesn't have flex, you should be able to get away with using this.

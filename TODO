@@ -1,0 +1,131 @@
+The Clio 'To Do' List.
+
+These are in no particular order. Each item has been classified as
+follows:
+
+! = High priority. Things I'd really like to see done. Just because
+    something is high priority, doesn't mean it will get done first. 
+
+* = Standard. Things that will probably be done eventually...
+
+? = Possible. Usually features that have been requested, or that I
+    have thought about adding, but which I'm not really too sure about.
+
+
+General
+-------
+? Implement macros.
+
+* Show SV total on status line. (Needs a change to FES)
+
+? Show TALLY and WHO count on the status line. Could use FEI.
+
+? Colour URLs blue in log body, and yellow in headers.
+
+* Cope with URLs that are split across lines.
+
+? Capture the litter word and chart directions. (Needs a context code?)
+
+? Character at a time mode when outside the game. Lets you use EDIT
+  when sending mail etc. (Might need to improve ANSI emulation? Needs
+  changes to URL parsing)
+
+? Make the input buffer optional?
+
+* 'Option unavailable' message when you quit. (FE catching the last FES)
+
+* Timeout option.
+
+! Improve ANSI handling, and CR handling - eg avalon-rpg.com
+
+? User definable colour schemes.
+
+! Don't echo passwords on the input line.
+
+* Improved scroll back handling. (Jump to top of buffer, page at
+  a time scrolling, freeze screen on scroll back).
+
+? Split screen on scroll back.
+
+* When you try to ATT to a new persona, and your persona slots are all
+  in use, the FES command is taken as input.
+
+* When you ATT to mobile, FES causes your prompt to scroll.
+
+* Sometimes when snooping, the |1| is not at the start of the line.
+
+? CTRL-V option to show command history.
+
+? History search option.
+
+* Escaped commands are not handled when the server is in no-echo (/N)
+  mode. (Is this a server bug? - ask Richard). Should Clio always
+  force /E mode?
+
+? lines get chomped at 254 when uploading.
+
+* A method to bind filenames to funtion keys.
+
+* Supply the missing \n to files.
+
+* Spurious pops on third party emotion messages. (MUD2 bug?).
+
+* Spurious pops on STINGS. (MUD2 bug?).
+
+* On input line, ctrl to move forward/back one word.
+
+* Status line to show if you have a cold.
+
+
+Windows
+-------
+* Check installation under Windows 95. (It crashes on my laptop)
+
+? Connect options via a menu.
+
+* Sometimes the mouse cursor appears in the Windows full screen mode,
+  even though it has been disabled. (PDCurses problem)
+
+* Sometimes there is a pause at startup, and you have to hit a key to
+  get any response. (PDCurses?)
+
+? Convert ncurses to Windows. This is a major undertaking.
+
+* The cursor is not showing on the input line on some NT and W2K
+  systems.
+
+
+UNIX
+----
+* X Windows version with resizeable screen.
+
+* Crashes on resize under xterm. xterm scrollbar does not work.
+
+* Fix 'click' on sound effects under UNIX, perhaps by using a server
+  to play the sounds? I'm assuming the click comes from the sound
+  device being repeatedly opened and closed.
+
+? Add support for Enlightened Sound Daemon (EsounD) under Linux.
+
+* Improve the Makefile to handle each target (eg make linux, make os5).
+
+
+Sound Effects
+-------------
+* Make new WAV files for:
+
+  The "ear-shattering C/R/E/A/K" of the north tomb opening.
+  The "earth-trembling G|R|O|A|N" of the west tomb opening.
+  The "nerve-rendering S^C^R^E^E^C^H" of the south tomb opening.
+  The "mighty (B)(O)(O)(M)" of the east tomb opening.
+  The "grinding S>C>R>E>E>E" of the southeast tomb opening.
+  The "vibrant G}R}A}U}N}C}H" of the southwest tomb opening.
+  The "deathly S-W-I-S-H" of the northeast tomb opening.
+  The "ghostly C-R-E-A-K" of the tombs closing.
+
+  The slab in MROST starting to open with a "low, grinding noise" and
+  stopping with a "low, echoing thud". (two different effects)
+
+  Doors which "creaks slowly open".
+
+  The "Plonk!" of the ruby eye falling out.
