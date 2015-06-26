@@ -30,19 +30,20 @@ LFLAGS=	-8 -I
 CC=	gcc
 CFLAGS= -ansi -pedantic -O2 -s -W -Wall \
         -DCLIO_UNIX \
-        -DCLIO_OSS \
         -DNDEBUG
+#        -DCLIO_OSS \   # COMMENTED OUT FROM ORIGINAL
 
 #-Wstrict-prototypes -Wmissing-prototypes -Wshadow -Wconversion \
 
-LIBS=	-lncurses -laudiofile -lm
-LIBS=	-lncurses -laudiofile -lm -lsocket
+# LIBS=	-lncurses -laudiofile -lm
+# LIBS=	-lncurses -laudiofile -lm -lsocket
+LIBS=	-lncurses -lm # CUT DOWN FROM ORIGINAL ABOVE
 
 OBJS=	caption.o chomp.o csig.o date.o despace.o fkey.o history.o home.o html.o ini.o logging.o main.o makedir.o options.o playsound.o sclient.o sdream.o sound.o sscore.o sversion.o sweather.o tdo.o tdont.o telnet.o tinit.o tnaws.o tterm.o twill.o twont.o tx.o txfes.o usage.o wat.o wback.o wclose.o wcls.o wcolour.o wdisplay.o weol.o wflush.o wfore.o wheight.o wkey.o wline.o wopen.o wreverse.o wsave.o wstack.o wstream.o wwidth.o
 
 clio:	$(OBJS)
 	$(CC) $(CFLAGS) -o clio $(OBJS) $(LIBS)
-	-mcs -d clio
+# -mcs -d clio # COMMENTED OUT FROM ORIGINAL
 
 lint:
 	lint -Xa -p -I/usr/local/include *c | more
